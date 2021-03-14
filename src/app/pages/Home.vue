@@ -14,20 +14,29 @@
 
                     <h1 class="leading-8 text-xl">
                         <a href="https://linkedin.com/in/marvinisaac">
-                            <span class="text-sm">✉️ </span>
+                            <img class="h-4 inline-block"
+                                src="assets/images/envelope.svg">
                             Marvin Isaac
                         </a>
                     </h1>
 
                     <p class="leading-8 text-sm">
                         <span class="mr-4">
-                            <a href="https://github.com/marvinisaac">⌨️ Developer</a>
+                            <a href="https://github.com/marvinisaac">
+                                <img class="h-4 inline-block"
+                                    src="assets/images/code.svg">
+                                Developer
+                            </a>
                         </span>
                     </p>
 
                     <p class="leading-8 text-sm">
                         <span>
-                            <a href="#">✏️ Writer</a>
+                            <a href="#">
+                                <img class="h-4 inline-block"
+                                    src="assets/images/book.svg">
+                                Writer
+                            </a>
                         </span>
                     </p>
                 </div>
