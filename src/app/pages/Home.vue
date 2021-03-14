@@ -15,7 +15,7 @@
                     <h1 class="leading-8 text-xl">
                         <a href="https://linkedin.com/in/marvinisaac">
                             <img class="h-4 inline-block"
-                                src="assets/images/envelope.svg">
+                                src="assets/images/man.svg">
                             Marvin Isaac
                         </a>
                     </h1>
