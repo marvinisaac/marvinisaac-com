@@ -43,7 +43,7 @@
 
                 <div class="image-container
                     flex-grow self-center">
-                    <img src="https://hhl.sfo2.cdn.digitaloceanspaces.com/marvinisaac/brain-hemispheres.svg">
+                    <img src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/brain-hemispheres.svg">
                 </div>
             </div>
         </div>
