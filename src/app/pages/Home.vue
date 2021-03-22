@@ -32,7 +32,7 @@
 
                     <p class="leading-8 text-sm">
                         <span>
-                            <a href="#">
+                            <a href="/timeline">
                                 <img class="h-4 inline-block"
                                     src="assets/images/blog.svg">
                                 Writer
