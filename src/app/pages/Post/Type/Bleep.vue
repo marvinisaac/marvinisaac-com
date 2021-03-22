@@ -5,7 +5,12 @@
                 src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg">
             <div>
                 <span class="font-bold">Marvin Isaac</span>
-                <span class="text-gray-500 text-sm"> · {{ timeAgo }}</span>
+                <span class="text-gray-500 text-sm">
+                     · 
+                    <a :href="`/post/${id}`">
+                        {{ timeAgo }}
+                    </a>
+                </span>
             </div>
         </div>
         <div class="ml-10 p-2">
@@ -21,6 +26,7 @@ import { format } from 'timeago.js'
 
 export default {
     props: {
+        id: String,
         bleep: String,
         created: String
     },

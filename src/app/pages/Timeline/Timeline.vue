@@ -1,7 +1,8 @@
 <template>
-    <div class="max-w-screen-sm mx-auto pt-4">
+    <div class="max-w-screen-sm mx-auto p-4">
         <template v-for="post in posts" :key="post.id">
             <bleep v-if="post.type === 'bleep'"
+                :id="post.id"
                 :created="post.date_created"
                 :bleep="post.body">
             </bleep>
@@ -10,7 +11,7 @@
 </template>
 
 <script>
-import Bleep from './Post/Bleep.vue'
+import Bleep from '../Post/Type/Bleep.vue'
 
 export default {
     components: {
