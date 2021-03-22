@@ -6,7 +6,7 @@
                 &lt; Back to Timeline
             </a>
         </div>
-        <bleep v-if="post.type === 'bleep'"
+        <bleep v-if="post && post.type === 'bleep'"
             :id="post.id"
             :created="post.date_created"
             :bleep="post.body">
@@ -30,10 +30,16 @@ export default {
     async created() {
         fetch(`${process.env.VUE_APP_API_ENDPOINT}post/${this.id}`)
             .then(response => {
+                if (!response.ok) {
+                    throw new Error('Post ID not found')
+                }
                 return response.json()
             })
             .then(response => {
                 this.post = response.data
+            })
+            .catch(() => {
+                this.$router.push('/not-found')
             })
     }
 }
