@@ -73,7 +73,6 @@ export default {
             return textOnlyArray
         },
         _hasImage(string) {
-            console.log(string)
             let domTemporary = new DOMParser().parseFromString(string, 'text/html')
             return domTemporary.getElementsByTagName('img')[0] !== undefined
         },
@@ -84,6 +83,10 @@ export default {
 <style scoped>
 #container-body >>> p {
     @apply leading-relaxed mb-4;
+}
+
+#container-body >>> p + p {
+    @apply mb-0;
 }
 
 #container-body >>> .container-image {
