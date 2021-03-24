@@ -20,12 +20,20 @@
             :title="post.title"
             :body="post.body">
         </blog>
+
+        <image-post v-if="post && post.type === 'image'"
+            :id="post.id"
+            :created="post.date_created"
+            :title="post.title"
+            :body="post.body">
+        </image-post>
     </div>
 </template>
 
 <script>
 import Bleep from './Type/Bleep.vue'
 import Blog from '../Post/Type/Blog.vue'
+import ImagePost from '../Post/Type/Image.vue'
 
 export default {
     props: {
@@ -33,7 +41,8 @@ export default {
     },
     components: {
         Bleep,
-        Blog
+        Blog,
+        ImagePost
     },
     data: () => ({
         post: undefined
