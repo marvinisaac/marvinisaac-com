@@ -48,7 +48,7 @@ export default {
 }
 
 .container-body >>> img {
-    @apply rounded-sm shadow-md;
+    @apply rounded-md shadow-md;
 }
 
 .container-body >>> p {

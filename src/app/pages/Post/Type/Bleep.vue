@@ -20,8 +20,7 @@ export default {
     props: {
         id: String,
         bleep: String,
-        created: String,
-        isTimeline: Boolean
+        created: String
     },
     components: {
         Profile
@@ -85,7 +84,7 @@ export default {
     @apply leading-relaxed mb-4;
 }
 
-#container-body >>> p + p {
+#container-body >>> p:last-of-type {
     @apply mb-0;
 }
 
