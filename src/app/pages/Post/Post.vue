@@ -1,28 +1,39 @@
 <template>
-    <div class="flex flex-col h-full justify-center max-w-screen-sm mx-auto p-4">
+    <div class="flex flex-col justify-center max-w-screen-sm min-h-full  mx-auto p-4">
         <div>
             <a class="block p-2 text-right text-sm"
                 href="/timeline">
                 &lt; Back to Timeline
             </a>
         </div>
+
         <bleep v-if="post && post.type === 'bleep'"
             :id="post.id"
             :created="post.date_created"
             :bleep="post.body">
         </bleep>
+
+        <blog v-if="post.type === 'blog'"
+            :id="post.id"
+            :created="post.date_created"
+            :updated="post.date_updated"
+            :title="post.title"
+            :body="post.body">
+        </blog>
     </div>
 </template>
 
 <script>
 import Bleep from './Type/Bleep.vue'
+import Blog from '../Post/Type/Blog.vue'
 
 export default {
     props: {
         id: String
     },
     components: {
-        Bleep
+        Bleep,
+        Blog
     },
     data: () => ({
         post: undefined

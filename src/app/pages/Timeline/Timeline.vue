@@ -6,16 +6,25 @@
                 :created="post.date_created"
                 :bleep="post.body">
             </bleep>
+
+            <blog v-if="post.type === 'blog'"
+                :id="post.id"
+                :created="post.date_created"
+                :title="post.title"
+                :body="post.body">
+            </blog>
         </template>
     </div>
 </template>
 
 <script>
 import Bleep from '../Post/Type/Bleep.vue'
+import Blog from '../Post/Type/Blog.vue'
 
 export default {
     components: {
-        Bleep
+        Bleep,
+        Blog
     },
     data: () => ({
         posts: undefined
