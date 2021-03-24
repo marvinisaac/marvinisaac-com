@@ -13,7 +13,7 @@
             :bleep="post.body">
         </bleep>
 
-        <blog v-if="post.type === 'blog'"
+        <blog v-if="post && post.type === 'blog'"
             :id="post.id"
             :created="post.date_created"
             :updated="post.date_updated"
