@@ -54,6 +54,11 @@ export default {
             let imageUrl = this._extractImage()
             containerImage.classList.add('container-image')
             containerImage.style.backgroundImage = `url(${imageUrl})`
+            
+            let link = document.createElement('a')
+            link.href = `/post/${this.id}`
+            link.classList.add('link')
+            containerImage.appendChild(link)
             return containerImage
         },
         _extractImage() {
@@ -89,7 +94,11 @@ export default {
 }
 
 #container-body >>> .container-image {
-    @apply bg-center bg-cover left-0 my-4 rounded-md shadow-md top-0 w-full;
+    @apply bg-center bg-cover left-0 my-4 rounded-md relative shadow-md top-0 w-full;
     padding-top: 56.25%;
+}
+
+#container-body >>> .container-image .link {
+    @apply absolute block h-full left-0 top-0 w-full;
 }
 </style>

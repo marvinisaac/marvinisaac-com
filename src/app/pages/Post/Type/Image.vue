@@ -63,6 +63,11 @@ export default {
             let sharp = document.createElement('div')
             sharp.classList.add('container-image-sharp')
             sharp.style.backgroundImage = `url(${imageUrl})`
+
+            let link = document.createElement('a')
+            link.href = `/post/${this.id}`
+            link.classList.add('link')
+            sharp.appendChild(link)
             return sharp
         },
         _extractImage() {
@@ -89,5 +94,9 @@ export default {
 #container-body >>> .container-image-sharp {
     @apply absolute bg-center bg-contain bg-no-repeat left-0 top-0 w-full z-10;
     padding-top: 100%;
+}
+
+#container-body >>> .container-image-sharp .link {
+    @apply absolute block h-full left-0 top-0 w-full;
 }
 </style>
