@@ -4,9 +4,8 @@
             :id="id"
             :created="created">
         </profile>
-        <div id="container-body"
-            class="ml-10 p-2
-                md:pr-12"
+        <div class="container-body
+            mt-4 md:px-12"
             v-html="bleepProcessed">
         </div>
     </div>
@@ -85,20 +84,20 @@ export default {
 </script>
 
 <style scoped>
-#container-body >>> p {
+.container-body >>> p {
     @apply leading-relaxed mb-4;
 }
 
-#container-body >>> p:last-of-type {
+.container-body >>> p:last-of-type {
     @apply mb-0;
 }
 
-#container-body >>> .container-image {
-    @apply bg-center bg-cover left-0 my-4 rounded-md relative shadow-md top-0 w-full;
+.container-body >>> .container-image {
+    @apply bg-center bg-cover left-0 mt-4 rounded-md relative shadow-md top-0 w-full;
     padding-top: 56.25%;
 }
 
-#container-body >>> .container-image .link {
+.container-body >>> .container-image .link {
     @apply absolute block h-full left-0 top-0 w-full;
 }
 </style>

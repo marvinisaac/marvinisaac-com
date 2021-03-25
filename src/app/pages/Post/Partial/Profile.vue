@@ -4,7 +4,7 @@
             src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg">
         <div>
             <span class="font-bold">Marvin Isaac</span>
-            <span class="text-gray-500 text-sm">
+            <span class="text-gray-500 text-xs">
                     · 
                 <a :href="`/post/${id}`">
                     {{ timeAgo }}

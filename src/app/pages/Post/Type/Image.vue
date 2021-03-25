@@ -5,8 +5,8 @@
             :created="created">
         </profile>
         <div id="container-body"
-            class="ml-10 p-2
-                md:pr-12"
+            class="mt-4
+                md:px-12"
             v-html="bodyProcessed">
         </div>
     </div>
@@ -72,7 +72,7 @@ export default {
         },
         _extractImage() {
             let domContent = new DOMParser().parseFromString(this.bodyParsed, 'text/html')
-            return domContent.getElementsByTagName('img')[0].getAttribute('src');
+            return domContent.getElementsByTagName('img')[0].getAttribute('src')
         }
     }
 }
@@ -80,7 +80,7 @@ export default {
 
 <style scoped>
 #container-body >>> .container-image {
-    @apply border my-4 overflow-hidden relative rounded-md shadow-md w-full;
+    @apply border overflow-hidden relative rounded-md shadow-md w-full;
 }
 
 #container-body >>> .container-image-blurred {

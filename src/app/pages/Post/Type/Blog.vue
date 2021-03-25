@@ -4,8 +4,8 @@
             :id="id"
             :created="created">
         </profile>
-        <div class="ml-10 p-2
-            md:pr-12">
+        <div class="mt-4
+            md:px-12">
             <h1 class="font-bold leading-loose text-xl uppercase">
                 <a :href="`/post/${id}`">
                     {{ title }}
@@ -52,6 +52,10 @@ export default {
 }
 
 .container-body >>> p {
-    @apply leading-relaxed my-4;
+    @apply leading-relaxed mb-4;
+}
+
+.container-body >>> p:last-of-type {
+    @apply mb-0;
 }
 </style>
