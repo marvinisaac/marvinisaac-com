@@ -12,33 +12,47 @@
                     pb-4 pl-4
                     md:pb-6 md:pl-6">
 
-                    <h1 class="leading-8 text-xl">
-                        <a href="https://linkedin.com/in/marvinisaac">
-                            <img class="h-4 inline-block"
-                                src="assets/images/linkedin.svg">
-                            Marvin Isaac
+                    <div class="flex items-center">
+                        <a class="block w-6"
+                            href="https://linkedin.com/in/marvinisaac">
+                            <img class="w-4 inline-block"
+                                src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/linkedin.svg">
                         </a>
-                    </h1>
 
-                    <p class="leading-8 text-sm">
-                        <span class="mr-4">
+                        <h1 class="leading-8 text-xl">
+                            <a href="https://linkedin.com/in/marvinisaac">
+                                Marvin Isaac
+                            </a>
+                        </h1>
+                    </div>
+
+                    <div class="flex items-center">
+                        <a class="block w-6"
+                            href="https://github.com/marvinisaac">
+                            <img class="w-4 inline-block"
+                                src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/github.svg">
+                        </a>
+
+                        <h1 class="text-sm">
                             <a href="https://github.com/marvinisaac">
-                                <img class="h-4 inline-block"
-                                    src="assets/images/github.svg">
                                 Developer
                             </a>
-                        </span>
-                    </p>
+                        </h1>
+                    </div>
 
-                    <p class="leading-8 text-sm">
-                        <span>
+                    <div class="flex items-center">
+                        <a class="block w-6"
+                            href="/timeline">
+                            <img class="w-4 inline-block"
+                                src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/blog.svg">
+                        </a>
+
+                        <h1 class="text-sm">
                             <a href="/timeline">
-                                <img class="h-4 inline-block"
-                                    src="assets/images/blog.svg">
                                 Writer
                             </a>
-                        </span>
-                    </p>
+                        </h1>
+                    </div>
                 </div>
 
                 <div class="image-container
