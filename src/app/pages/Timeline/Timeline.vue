@@ -1,5 +1,10 @@
 <template>
     <div class="max-w-screen-sm mx-auto p-4">
+        <div class="mb-4 mx-auto overflow-hidden rounded-full w-24">
+            <a class="block" href="/">
+                <img src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/m.jpg">
+            </a>
+        </div>
         <template v-for="post in posts" :key="post.id">
             <bleep v-if="post.type === 'bleep'"
                 :id="post.id"
