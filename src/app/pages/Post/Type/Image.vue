@@ -1,12 +1,10 @@
 <template>
-    <div class="bg-white mb-4 p-4 pb-6 rounded-sm shadow-2xl">
+    <div class="bg-white mb-4 overflow-hidden rounded-sm shadow-2xl">
         <profile
             :id="id"
             :created="created">
         </profile>
-        <div id="container-body"
-            class="mt-4
-                md:px-12"
+        <div class="container-body"
             v-html="bodyProcessed">
         </div>
     </div>
@@ -107,11 +105,11 @@ export default {
 </script>
 
 <style scoped>
-#container-body >>> .container-image {
-    @apply border overflow-hidden relative rounded-md shadow-md w-full;
+.container-body >>> .container-image {
+    @apply border overflow-hidden relative w-full;
 }
 
-#container-body >>> .container-image-blurred {
+.container-body >>> .container-image-blurred {
     @apply bg-center bg-cover left-0 top-0 w-full z-0;
     filter: blur(20px)
         brightness(120%);
@@ -119,12 +117,12 @@ export default {
     transform: scale(1.2);
 }
 
-#container-body >>> .container-image-sharp {
+.container-body >>> .container-image-sharp {
     @apply absolute bg-center bg-contain bg-no-repeat left-0 top-0 w-full z-10;
     padding-top: 100%;
 }
 
-#container-body >>> .container-image-sharp .link {
+.container-body >>> .container-image-sharp .link {
     @apply absolute block h-full left-0 top-0 w-full;
 }
 

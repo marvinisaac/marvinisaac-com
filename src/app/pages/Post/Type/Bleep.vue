@@ -1,11 +1,12 @@
 <template>
-    <div class="bg-white mb-4 p-4 pb-6 rounded-sm shadow-2xl">
+    <div class="bg-white mb-4 rounded-sm shadow-2xl">
         <profile
             :id="id"
             :created="created">
         </profile>
         <div class="container-body
-            mt-4 md:px-12"
+            p-4 pt-0
+            md:px-16"
             v-html="bleepProcessed">
         </div>
     </div>
@@ -78,7 +79,7 @@ export default {
         _hasImage(string) {
             let domTemporary = new DOMParser().parseFromString(string, 'text/html')
             return domTemporary.getElementsByTagName('img')[0] !== undefined
-        },
+        }
     }
 }
 </script>

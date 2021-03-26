@@ -1,11 +1,11 @@
 <template>
-    <div class="bg-white mb-4 p-4 pb-6 rounded-sm shadow-2xl">
+    <div class="bg-white mb-4 rounded-sm shadow-2xl">
         <profile
             :id="id"
             :created="created">
         </profile>
-        <div class="mt-4
-            md:px-12">
+        <div class="p-4 pt-0
+            md:px-16">
             <h1 class="font-bold leading-loose text-xl uppercase">
                 <a :href="`/post/${id}`">
                     {{ title }}
