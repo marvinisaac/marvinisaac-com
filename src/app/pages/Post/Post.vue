@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-center max-w-screen-sm min-h-full  mx-auto p-4">
+    <div class="flex flex-col justify-center max-w-screen-md min-h-full  mx-auto p-4">
         <div>
             <a class="block p-2 text-right text-sm"
                 href="/timeline">

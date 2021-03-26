@@ -5,13 +5,13 @@
             :created="created">
         </profile>
         <div class="p-4 pt-0
-            md:px-16">
-            <h1 class="font-bold leading-loose text-xl uppercase">
+            md:px-8">
+            <h1 class="font-bold leading-loose text-2xl uppercase">
                 <a :href="`/post/${id}`">
                     {{ title }}
                 </a>
             </h1>
-            <div class="container-body"
+            <div class="container-body mx-auto"
                 v-html="bodyParsed">
             </div>
         </div>
@@ -46,8 +46,20 @@ export default {
 </script>
 
 <style scoped>
+.container-body {
+    @apply max-w-prose;
+}
+
 .container-body :deep(blockquote) {
-    @apply border-l-4 font-bold italic pl-4 text-xl;
+    @apply border-l-4 font-bold italic my-4 pl-4;
+}
+
+.container-body :deep(h2) {
+    @apply font-bold leading-loose text-xl;
+}
+
+.container-body :deep(hr) {
+    @apply my-4;
 }
 
 .container-body :deep(img) {
@@ -55,10 +67,22 @@ export default {
 }
 
 .container-body :deep(p) {
-    @apply leading-relaxed mb-4;
+    @apply leading-relaxed my-4;
+}
+
+.container-body :deep(p code) {
+    @apply bg-gray-100 p-1 text-red-500;
 }
 
 .container-body :deep(p:last-of-type) {
     @apply mb-0;
+}
+
+.container-body :deep(pre) {
+    @apply bg-gray-100 p-4 whitespace-pre-wrap;
+}
+
+.container-body :deep(ul) {
+    @apply list-disc ml-6;
 }
 </style>
