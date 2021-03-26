@@ -21,6 +21,8 @@
 <script>
 import markdown from 'markdown-it'
 import Profile from './../Partial/Profile'
+import { emojify } from 'node-emoji'
+// List of supported emojis: https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json
 
 export default {
     props: {
@@ -38,6 +40,7 @@ export default {
     async created() {
         const md = new markdown()
         this.bodyParsed = md.render(this.body)
+        this.bodyParsed = emojify(this.bodyParsed)
     }
 }
 </script>
