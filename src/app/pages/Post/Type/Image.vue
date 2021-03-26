@@ -40,6 +40,9 @@ export default {
             let containerImage = this._createImage()
             containerBody.appendChild(containerImage)
 
+            let containerText = this._createText()
+            containerBody.appendChild(containerText)
+
             return containerBody.innerHTML
         },
         _createImage() {
@@ -70,9 +73,34 @@ export default {
             sharp.appendChild(link)
             return sharp
         },
+        _createText() {
+            let containerText = document.createElement('div')
+            containerText.classList.add('container-text')
+
+            let text = this._extractText()
+            text.forEach(t => {
+                containerText.append(t)
+            })
+            return containerText
+        },
         _extractImage() {
             let domContent = new DOMParser().parseFromString(this.bodyParsed, 'text/html')
             return domContent.getElementsByTagName('img')[0].getAttribute('src')
+        },
+        _extractText() {
+            let domContent = new DOMParser().parseFromString(this.bodyParsed, 'text/html')
+            let textArray = [...domContent.getElementsByTagName('p')]
+            let textOnlyArray = []
+            textArray.forEach(element => {
+                if (!this._hasImage(element.innerHTML)) {
+                    textOnlyArray.push(element)
+                }
+            })
+            return textOnlyArray
+        },
+        _hasImage(string) {
+            let domTemporary = new DOMParser().parseFromString(string, 'text/html')
+            return domTemporary.getElementsByTagName('img')[0] !== undefined
         }
     }
 }
@@ -98,5 +126,10 @@ export default {
 
 #container-body >>> .container-image-sharp .link {
     @apply absolute block h-full left-0 top-0 w-full;
+}
+
+.container-body >>> .container-text {
+    @apply leading-loose p-4 text-gray-700 text-sm
+        md:px-16;
 }
 </style>
