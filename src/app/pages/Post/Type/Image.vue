@@ -105,11 +105,11 @@ export default {
 </script>
 
 <style scoped>
-.container-body >>> .container-image {
-    @apply border overflow-hidden relative w-full;
+.container-body :deep(.container-image) {
+    @apply border-b border-t overflow-hidden relative w-full;
 }
 
-.container-body >>> .container-image-blurred {
+.container-body :deep(.container-image-blurred) {
     @apply bg-center bg-cover left-0 top-0 w-full z-0;
     filter: blur(20px)
         brightness(120%);
@@ -117,16 +117,16 @@ export default {
     transform: scale(1.2);
 }
 
-.container-body >>> .container-image-sharp {
+.container-body :deep(.container-image-sharp) {
     @apply absolute bg-center bg-contain bg-no-repeat left-0 top-0 w-full z-10;
     padding-top: 100%;
 }
 
-.container-body >>> .container-image-sharp .link {
+.container-body :deep(.container-image-sharp .link) {
     @apply absolute block h-full left-0 top-0 w-full;
 }
 
-.container-body >>> .container-text {
+.container-body :deep(.container-text) {
     @apply leading-loose p-4 text-gray-700 text-sm
         md:px-16;
 }

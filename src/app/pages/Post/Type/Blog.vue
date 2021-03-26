@@ -43,19 +43,19 @@ export default {
 </script>
 
 <style scoped>
-.container-body >>> blockquote {
+.container-body :deep(blockquote) {
     @apply border-l-4 font-bold italic pl-4 text-xl;
 }
 
-.container-body >>> img {
+.container-body :deep(img) {
     @apply rounded-md shadow-md;
 }
 
-.container-body >>> p {
+.container-body :deep(p) {
     @apply leading-relaxed mb-4;
 }
 
-.container-body >>> p:last-of-type {
+.container-body :deep(p:last-of-type) {
     @apply mb-0;
 }
 </style>

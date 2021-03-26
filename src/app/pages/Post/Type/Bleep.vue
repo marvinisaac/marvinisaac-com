@@ -85,20 +85,20 @@ export default {
 </script>
 
 <style scoped>
-.container-body >>> p {
+.container-body :deep(p) {
     @apply leading-relaxed mb-4;
 }
 
-.container-body >>> p:last-of-type {
+.container-body :deep(p:last-of-type) {
     @apply mb-0;
 }
 
-.container-body >>> .container-image {
+.container-body :deep(.container-image) {
     @apply bg-center bg-cover left-0 mt-4 rounded-md relative shadow-md top-0 w-full;
     padding-top: 56.25%;
 }
 
-.container-body >>> .container-image .link {
+.container-body :deep(.container-image .link) {
     @apply absolute block h-full left-0 top-0 w-full;
 }
 </style>
