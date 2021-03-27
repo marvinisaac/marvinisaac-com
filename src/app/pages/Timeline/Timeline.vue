@@ -5,29 +5,34 @@
                 <img src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/m.jpg">
             </a>
         </div>
-        <template v-for="post in posts" :key="post.id">
-            <bleep v-if="post.type === 'bleep'"
-                :id="post.id"
-                :created="post.date_created"
-                :bleep="post.body"
-                :tag="post.tag">
-            </bleep>
+        <img v-if="!posts"
+            class="max-w-screen-sm mx-auto"
+            src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/loading.svg">
+        <template v-else>
+            <template v-for="post in posts" :key="post.id">
+                <bleep v-if="post.type === 'bleep'"
+                    :id="post.id"
+                    :created="post.date_created"
+                    :bleep="post.body"
+                    :tag="post.tag">
+                </bleep>
 
-            <blog v-if="post.type === 'blog'"
-                :id="post.id"
-                :created="post.date_created"
-                :title="post.title"
-                :body="post.body"
-                :tag="post.tag">
-            </blog>
+                <blog v-if="post.type === 'blog'"
+                    :id="post.id"
+                    :created="post.date_created"
+                    :title="post.title"
+                    :body="post.body"
+                    :tag="post.tag">
+                </blog>
 
-            <image-post v-if="post.type === 'image'"
-                :id="post.id"
-                :created="post.date_created"
-                :title="post.title"
-                :body="post.body"
-                :tag="post.tag">
-            </image-post>
+                <image-post v-if="post.type === 'image'"
+                    :id="post.id"
+                    :created="post.date_created"
+                    :title="post.title"
+                    :body="post.body"
+                    :tag="post.tag">
+                </image-post>
+            </template>
         </template>
     </div>
 </template>
