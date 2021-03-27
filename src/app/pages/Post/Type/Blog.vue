@@ -4,7 +4,7 @@
             :id="id"
             :created="created">
         </profile>
-        <div class="p-4 pt-0
+        <div class="px-4 py-0
             md:px-8">
             <h1 class="font-bold leading-loose text-2xl uppercase">
                 <a :href="`/post/${id}`">

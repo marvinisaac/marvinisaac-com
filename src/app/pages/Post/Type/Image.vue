@@ -131,7 +131,7 @@ export default {
 }
 
 .container-body :deep(.container-text) {
-    @apply leading-loose p-4 text-gray-700 text-sm
+    @apply leading-loose p-4 pb-0 text-gray-700 text-sm
         md:px-16;
 }
 </style>

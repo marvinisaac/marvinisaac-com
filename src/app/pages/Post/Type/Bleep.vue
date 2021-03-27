@@ -5,7 +5,7 @@
             :created="created">
         </profile>
         <div class="container-body
-            p-4 pt-0
+            px-4 py-0
             md:px-16"
             v-html="bleepProcessed">
         </div>
