@@ -4,11 +4,11 @@
             class="max-w-screen-sm mx-auto"
             src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/loading.svg">
         <template v-else>
-            <div>
-                <a class="block p-2 text-right text-sm"
-                    href="/timeline">
-                    &lt; Back to Timeline
-                </a>
+            <div class="flex justify-end mb-2">
+                <my-button class="italic"
+                    text="Back to Timeline"
+                    url="/timeline">
+                </my-button>
             </div>
 
             <bleep v-if="post.type === 'bleep'"
@@ -42,6 +42,7 @@
 import Bleep from './Type/Bleep.vue'
 import Blog from '../Post/Type/Blog.vue'
 import ImagePost from '../Post/Type/Image.vue'
+import myButton from './../../component/button.vue'
 
 export default {
     props: {
@@ -50,7 +51,8 @@ export default {
     components: {
         Bleep,
         Blog,
-        ImagePost
+        ImagePost,
+        myButton
     },
     data: () => ({
         post: undefined

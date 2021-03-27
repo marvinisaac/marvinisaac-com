@@ -1,9 +1,15 @@
 <template>
     <div class="max-w-screen-sm mx-auto p-4">
-        <div class="mb-4 mx-auto overflow-hidden rounded-full w-24">
-            <a class="block" href="/">
-                <img src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/m.jpg">
-            </a>
+        <div class="flex justify-end mb-2">
+            <my-button v-if="hasTag"
+                class="italic font-bold"
+                text="Remove Filter"
+                url="/timeline">
+            </my-button>
+            <my-button class="italic ml-2"
+                text="Back to Home"
+                url="/">
+            </my-button>
         </div>
         <img v-if="!posts"
             class="max-w-screen-sm mx-auto"
@@ -42,21 +48,25 @@ import Bleep from '../Post/Type/Bleep.vue'
 import Blog from '../Post/Type/Blog.vue'
 import ImagePost from '../Post/Type/Image.vue'
 import { useRoute } from 'vue-router'
+import myButton from './../../component/button.vue'
 
 export default {
     components: {
         Bleep,
         Blog,
-        ImagePost
+        ImagePost,
+        myButton
     },
     data: () => ({
-        posts: undefined
+        posts: undefined,
+        hasTag: false
     }),
     async created() {
         const route = useRoute()
         const tag = route.query.tag || ''
         let url = process.env.VUE_APP_API_ENDPOINT + 'post/'
         if (tag !== '') {
+            this.hasTag = true
             url += `?tag=${tag}`
         }
         fetch(url)
