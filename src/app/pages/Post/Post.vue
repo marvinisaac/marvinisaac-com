@@ -41,7 +41,7 @@
 <script>
 import Bleep from './Type/Bleep.vue'
 import Blog from '../Post/Type/Blog.vue'
-import ImagePost from '../Post/Type/Image.vue'
+import ImagePost from '../Post/Type/Image/Image.vue'
 import myButton from './../../component/button.vue'
 
 export default {

@@ -46,7 +46,7 @@
 <script>
 import Bleep from '../Post/Type/Bleep.vue'
 import Blog from '../Post/Type/Blog.vue'
-import ImagePost from '../Post/Type/Image.vue'
+import ImagePost from '../Post/Type/Image/Image.vue'
 import { useRoute } from 'vue-router'
 import myButton from './../../component/button.vue'
 
