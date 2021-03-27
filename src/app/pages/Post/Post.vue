@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-center max-w-screen-md min-h-full  mx-auto p-4">
+    <div class="flex flex-col justify-center max-w-screen-md min-h-full mx-auto p-4">
         <img v-if="!post"
             class="max-w-screen-sm mx-auto"
             src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/loading.svg">

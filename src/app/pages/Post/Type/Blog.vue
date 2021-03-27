@@ -4,9 +4,9 @@
             :id="id"
             :created="created">
         </profile>
-        <div class="px-4 py-0
+        <div class="mx-auto prose px-4 py-0
             md:px-8">
-            <h1 class="font-bold leading-loose text-2xl uppercase">
+            <h1>
                 <a :href="`/post/${id}`">
                     {{ title }}
                 </a>
@@ -54,14 +54,6 @@ export default {
     @apply max-w-prose;
 }
 
-.container-body :deep(blockquote) {
-    @apply border-l-4 font-bold italic my-4 pl-4;
-}
-
-.container-body :deep(h2) {
-    @apply font-bold leading-loose text-xl;
-}
-
 .container-body :deep(hr) {
     @apply my-4;
 }
@@ -70,23 +62,7 @@ export default {
     @apply rounded-md shadow-md;
 }
 
-.container-body :deep(p) {
-    @apply leading-relaxed my-4;
-}
-
-.container-body :deep(p code) {
-    @apply bg-gray-100 p-1 text-red-500;
-}
-
-.container-body :deep(p:last-of-type) {
-    @apply mb-0;
-}
-
 .container-body :deep(pre) {
-    @apply bg-gray-100 p-4 whitespace-pre-wrap;
-}
-
-.container-body :deep(ul) {
-    @apply list-disc ml-6;
+    @apply whitespace-pre-wrap;
 }
 </style>
