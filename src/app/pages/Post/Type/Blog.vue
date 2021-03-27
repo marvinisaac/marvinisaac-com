@@ -15,24 +15,28 @@
                 v-html="bodyParsed">
             </div>
         </div>
+        <tag-list :tag="tag"></tag-list>
     </div>
 </template>
 
 <script>
 import markdown from 'markdown-it'
-import Profile from './../Partial/Profile'
+import Profile from './../Partial/Profile.vue'
 import { emojify } from 'node-emoji'
 // List of supported emojis: https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json
+import TagList from '../Partial/TagList.vue'
 
 export default {
     props: {
         id: String,
         created: String,
         title: String,
-        body: String
+        body: String,
+        tag: Array
     },
     components: {
-        Profile
+        Profile,
+        TagList
     },
     data: () => ({
         bodyParsed: null,

@@ -10,23 +10,26 @@
         <bleep v-if="post && post.type === 'bleep'"
             :id="post.id"
             :created="post.date_created"
-            :bleep="post.body">
-        </bleep>
+                :bleep="post.body"
+                :tag="post.tag">
+            </bleep>
 
         <blog v-if="post && post.type === 'blog'"
             :id="post.id"
             :created="post.date_created"
             :updated="post.date_updated"
             :title="post.title"
-            :body="post.body">
-        </blog>
+                :body="post.body"
+                :tag="post.tag">
+            </blog>
 
         <image-post v-if="post && post.type === 'image'"
             :id="post.id"
             :created="post.date_created"
             :title="post.title"
-            :body="post.body">
-        </image-post>
+                :body="post.body"
+                :tag="post.tag">
+            </image-post>
     </div>
 </template>
 

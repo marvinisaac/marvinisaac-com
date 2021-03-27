@@ -9,21 +9,24 @@
             <bleep v-if="post.type === 'bleep'"
                 :id="post.id"
                 :created="post.date_created"
-                :bleep="post.body">
+                :bleep="post.body"
+                :tag="post.tag">
             </bleep>
 
             <blog v-if="post.type === 'blog'"
                 :id="post.id"
                 :created="post.date_created"
                 :title="post.title"
-                :body="post.body">
+                :body="post.body"
+                :tag="post.tag">
             </blog>
 
             <image-post v-if="post.type === 'image'"
                 :id="post.id"
                 :created="post.date_created"
                 :title="post.title"
-                :body="post.body">
+                :body="post.body"
+                :tag="post.tag">
             </image-post>
         </template>
     </div>
@@ -33,6 +36,7 @@
 import Bleep from '../Post/Type/Bleep.vue'
 import Blog from '../Post/Type/Blog.vue'
 import ImagePost from '../Post/Type/Image.vue'
+import { useRoute } from 'vue-router'
 
 export default {
     components: {
@@ -44,7 +48,13 @@ export default {
         posts: undefined
     }),
     async created() {
-        fetch(process.env.VUE_APP_API_ENDPOINT + 'post/')
+        const route = useRoute()
+        const tag = route.query.tag || ''
+        let url = process.env.VUE_APP_API_ENDPOINT + 'post/'
+        if (tag !== '') {
+            url += `?tag=${tag}`
+        }
+        fetch(url)
             .then(response => {
                 return response.json()
             })

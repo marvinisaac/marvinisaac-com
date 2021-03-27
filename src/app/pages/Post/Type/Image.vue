@@ -7,21 +7,25 @@
         <div class="container-body"
             v-html="bodyProcessed">
         </div>
+        <tag-list :tag="tag"></tag-list>
     </div>
 </template>
 
 <script>
 import markdown from 'markdown-it'
-import Profile from './../Partial/Profile'
+import Profile from './../Partial/Profile.vue'
+import TagList from '../Partial/TagList.vue'
 
 export default {
     props: {
         id: String,
         body: String,
-        created: String
+        created: String,
+        tag: Array
     },
     components: {
-        Profile
+        Profile,
+        TagList
     },
     data: () => ({
         bodyParsed: null,
