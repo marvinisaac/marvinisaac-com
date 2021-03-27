@@ -17,6 +17,7 @@
 import markdown from 'markdown-it'
 import Profile from './../Partial/Profile.vue'
 import TagList from '../Partial/TagList.vue'
+import { emojify } from 'node-emoji'
 
 export default {
     props: {
@@ -75,6 +76,7 @@ export default {
             let textOnlyArray = []
             textArray.forEach(element => {
                 if (!this._hasImage(element.innerHTML)) {
+                    element.innerHTML = emojify(element.innerHTML)
                     textOnlyArray.push(element)
                 }
             })
