@@ -7,9 +7,9 @@
         <div class="mx-auto prose px-4 py-0
             md:px-8">
             <h1>
-                <a :href="`/post/${id}`">
+                <router-link :to="`/post/${id}`">
                     {{ title }}
-                </a>
+                </router-link>
             </h1>
             <div class="container-body mx-auto"
                 v-html="bodyParsed">

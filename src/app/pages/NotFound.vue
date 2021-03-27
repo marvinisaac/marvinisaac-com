@@ -7,9 +7,9 @@
         <div class="bg-white mx-auto my-4 rounded px-4
             md:w-1/6">
             <p class="leading-8 text-sm">
-                <a href="/">
+                <router-link to="/">
                     Home
-                </a>
+                </router-link>
             </p>
         </div>
     </div>

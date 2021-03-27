@@ -4,13 +4,13 @@
             src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-small.jpg">
         <div>
             <span class="font-bold">
-                <a href="/">Marvin Isaac</a>
+                <router-link to="/">Marvin Isaac</router-link>
             </span>
             <span class="text-gray-500 text-xs">
                     · 
-                <a :href="`/post/${id}`">
+                <router-link :to="`/post/${id}`">
                     {{ timeAgo }}
-                </a>
+                </router-link>
             </span>
         </div>
     </div>

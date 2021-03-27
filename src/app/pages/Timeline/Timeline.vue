@@ -59,23 +59,33 @@ export default {
     },
     data: () => ({
         posts: undefined,
-        hasTag: false
+        hasTag: false,
+        route: useRoute()
     }),
+    watch: {
+        '$route.params': 'getPosts'
+    },
     async created() {
-        const route = useRoute()
-        const tag = route.query.tag || ''
-        let url = process.env.VUE_APP_API_ENDPOINT + 'post/'
-        if (tag !== '') {
-            this.hasTag = true
-            url += `?tag=${tag}`
+        this.getPosts()
+    },
+    methods: {
+        getPosts() {
+            let tag = this.route.query.tag || ''
+            let url = process.env.VUE_APP_API_ENDPOINT + 'post/'
+            if (tag !== '') {
+                this.hasTag = true
+                url += `?tag=${tag}`
+            } else {
+                this.hasTag = false
+            }
+            fetch(url)
+                .then(response => {
+                    return response.json()
+                })
+                .then(response => {
+                    this.posts = response.data
+                })
         }
-        fetch(url)
-            .then(response => {
-                return response.json()
-            })
-            .then(response => {
-                this.posts = response.data
-            })
     }
 }
 </script>

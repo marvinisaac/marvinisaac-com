@@ -41,16 +41,16 @@
                     </div>
 
                     <div class="flex items-center">
-                        <a class="block w-6"
-                            href="/timeline">
+                        <router-link class="block w-6"
+                            to="/timeline">
                             <img class="w-4 inline-block"
                                 src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/blog.svg">
-                        </a>
+                        </router-link>
 
                         <h1 class="text-sm">
-                            <a href="/timeline">
+                            <router-link to="/timeline">
                                 Writer
-                            </a>
+                            </router-link>
                         </h1>
                     </div>
                 </div>
