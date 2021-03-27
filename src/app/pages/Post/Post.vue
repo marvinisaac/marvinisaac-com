@@ -1,35 +1,40 @@
 <template>
     <div class="flex flex-col justify-center max-w-screen-md min-h-full  mx-auto p-4">
-        <div>
-            <a class="block p-2 text-right text-sm"
-                href="/timeline">
-                &lt; Back to Timeline
-            </a>
-        </div>
+        <img v-if="!post"
+            class="max-w-screen-sm mx-auto"
+            src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/loading.svg">
+        <template v-else>
+            <div>
+                <a class="block p-2 text-right text-sm"
+                    href="/timeline">
+                    &lt; Back to Timeline
+                </a>
+            </div>
 
-        <bleep v-if="post && post.type === 'bleep'"
-            :id="post.id"
-            :created="post.date_created"
+            <bleep v-if="post.type === 'bleep'"
+                :id="post.id"
+                :created="post.date_created"
                 :bleep="post.body"
                 :tag="post.tag">
             </bleep>
 
-        <blog v-if="post && post.type === 'blog'"
-            :id="post.id"
-            :created="post.date_created"
-            :updated="post.date_updated"
-            :title="post.title"
+            <blog v-if="post.type === 'blog'"
+                :id="post.id"
+                :created="post.date_created"
+                :updated="post.date_updated"
+                :title="post.title"
                 :body="post.body"
                 :tag="post.tag">
             </blog>
 
-        <image-post v-if="post && post.type === 'image'"
-            :id="post.id"
-            :created="post.date_created"
-            :title="post.title"
+            <image-post v-if="post.type === 'image'"
+                :id="post.id"
+                :created="post.date_created"
+                :title="post.title"
                 :body="post.body"
                 :tag="post.tag">
             </image-post>
+        </template>
     </div>
 </template>
 

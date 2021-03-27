@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-center p-4">
         <img class="h-10 mr-2 rounded-full w-10"
-            src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg">
+            src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-small.jpg">
         <div>
             <span class="font-bold">
                 <a href="/">Marvin Isaac</a>
