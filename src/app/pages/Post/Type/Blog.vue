@@ -5,7 +5,7 @@
             :created="created">
         </profile>
         <div class="mx-auto prose px-4 py-0
-            md:px-8">
+            md:px-16">
             <h1>
                 <router-link :to="`/post/${id}`">
                     {{ title }}
