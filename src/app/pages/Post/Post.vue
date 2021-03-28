@@ -14,7 +14,7 @@
             <bleep v-if="post.type === 'bleep'"
                 :id="post.id"
                 :created="post.date_created"
-                :bleep="post.body"
+                :body="post.body"
                 :tag="post.tag">
             </bleep>
 
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import Bleep from './Type/Bleep.vue'
+import Bleep from './Type/Bleep/Bleep.vue'
 import Blog from '../Post/Type/Blog.vue'
 import ImagePost from '../Post/Type/Image/Image.vue'
 import myButton from './../../component/button.vue'

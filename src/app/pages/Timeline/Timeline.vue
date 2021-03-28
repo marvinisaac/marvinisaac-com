@@ -19,7 +19,7 @@
                 <bleep v-if="post.type === 'bleep'"
                     :id="post.id"
                     :created="post.date_created"
-                    :bleep="post.body"
+                    :body="post.body"
                     :tag="post.tag">
                 </bleep>
 
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import Bleep from '../Post/Type/Bleep.vue'
+import Bleep from '../Post/Type/Bleep/Bleep.vue'
 import Blog from '../Post/Type/Blog.vue'
 import ImagePost from '../Post/Type/Image/Image.vue'
 import { useRoute } from 'vue-router'
@@ -58,8 +58,8 @@ export default {
         myButton
     },
     data: () => ({
-        posts: undefined,
         hasTag: false,
+        posts: undefined,
         route: useRoute()
     }),
     watch: {
