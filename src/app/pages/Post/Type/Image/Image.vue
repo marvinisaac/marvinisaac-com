@@ -28,6 +28,7 @@ import ImageBlurred from './ImageBlurred.vue'
 import ImageSharp from './ImageSharp.vue'
 import Profile from './../../Partial/Profile.vue'
 import TagList from './../../Partial/TagList.vue'
+import { emojify } from 'node-emoji'
 
 export default {
     props: {
@@ -49,6 +50,7 @@ export default {
     async created() {
         const md = new markdown()
         let bodyParsed = md.render(this.body)
+        bodyParsed = emojify(bodyParsed)
         this.caption = bodyParsed
         this.url = this._extractImage(bodyParsed)
     },
