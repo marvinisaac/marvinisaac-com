@@ -60,7 +60,28 @@ export default {
     data: () => ({
         hasTag: false,
         posts: undefined,
-        route: useRoute()
+        route: useRoute(),
+        meta: {
+            title: 'Marvin Isaac | Timeline',
+            tags: [
+                {
+                    name: 'description',
+                    content: 'Marvin Isaac | Timeline'
+                }, {
+                    property: 'og:description',
+                    content: 'Marvin Isaac | Timeline'
+                }, {
+                    property: 'og:image',
+                    content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/m.jpg'
+                }, {
+                    property: 'og:title',
+                    content: 'Marvin Isaac | Timeline'
+                }, {
+                    property: 'og:url',
+                    content: 'https://marvinisaac.com/timeline'
+                }
+            ]
+        }
     }),
     watch: {
         '$route.params': 'getPosts'
@@ -84,7 +105,27 @@ export default {
                 })
                 .then(response => {
                     this.posts = response.data
+                    this._updateMeta()
                 })
+        },
+        _updateMeta() {
+            // Remove any stale meta tags from the document using the key attribute we set below.
+            Array.from(document.querySelectorAll('[vue-controlled]'))
+                .map(el => el.parentNode.removeChild(el))
+
+            document.title = this.meta.title
+            this.meta.tags.map(tagDetail => {
+                const tag = document.createElement('meta')
+
+                Object.keys(tagDetail).forEach(key => {
+                    tag.setAttribute(key, tagDetail[key])
+                })
+
+                tag.setAttribute('vue-controlled', '')
+                return tag
+            })
+                .forEach(tag => document.head.appendChild(tag))
+            console.log('> Timeline: Updated head')
         }
     }
 }
