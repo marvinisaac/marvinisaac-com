@@ -84,6 +84,10 @@ export default {
     @apply hidden;
 }
 
+.container-body .container-text :deep(s) {
+    @apply text-xs;
+}
+
 .container-body .container-image {
     padding-top: 56.25%;
 }
