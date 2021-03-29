@@ -43,6 +43,9 @@ import Bleep from './Type/Bleep/Bleep.vue'
 import Blog from '../Post/Type/Blog.vue'
 import ImagePost from '../Post/Type/Image/Image.vue'
 import myButton from './../../component/button.vue'
+import { useRoute } from 'vue-router'
+import meta from './../../AppMeta.js'
+import markdown from 'markdown-it'
 
 export default {
     props: {
@@ -55,7 +58,12 @@ export default {
         myButton
     },
     data: () => ({
-        post: undefined
+        post: undefined,
+        route: useRoute(),
+        meta: {
+            title: undefined,
+            tags: undefined
+        }
     }),
     async created() {
         fetch(`${process.env.VUE_APP_API_ENDPOINT}post/${this.id}`)
@@ -71,6 +79,76 @@ export default {
             .catch(() => {
                 this.$router.push('/not-found')
             })
+            .finally(() => {
+                this.buildMetaTags()
+                if (this.route.path.includes('/post/')) {
+                    meta.update(this.meta)
+                }
+            })
+    },
+    methods: {
+        buildMetaTags() {
+            const imageDefault = 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/m.jpg'
+            let title = this._formatTitle()
+            let description = this._formatDescription()
+            let image = this._extractImage()
+            let tags = [
+                {
+                    property: 'og:title',
+                    content: title
+                }, {
+                    property: 'og:url',
+                    content: 'https://marvinisaac.com' + this.route.path
+                }, {
+                    name: 'description',
+                    content: description || title
+                }, {
+                    property: 'og:description',
+                    content: description || title
+                }, {
+                    property: 'og:image',
+                    content: image || imageDefault
+                }
+            ]
+            this.meta.title = title
+            this.meta.tags = tags
+        },
+        _capitalize(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1)
+        },
+        _extractImage() {
+            const md = new markdown()
+            let bodyParsed = md.render(this.post.body)
+            if (!this._hasImage(bodyParsed)) {
+                return null
+            }
+
+            let domContent = new DOMParser().parseFromString(bodyParsed, 'text/html')
+            return domContent.getElementsByTagName('img')[0].getAttribute('src')
+        },
+        _formatDescription() {
+            if (this.post.description !== '') {
+                return this.post.description
+            }
+
+            return null
+        },
+        _formatTitle() {
+            if (this._isUuid(this.post.id)) {
+                let postTypeFormatted = this._capitalize(this.post.type)
+                return `${postTypeFormatted} | Marvin Isaac`
+            }
+
+            return `${this.post.title} | Marvin Isaac`
+        },
+        _hasImage(html) {
+            let domTemporary = new DOMParser().parseFromString(html, 'text/html')
+            return domTemporary.getElementsByTagName('img')[0] !== undefined
+        },
+        _isUuid(string) {
+            const pattern = new RegExp(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
+            return pattern.test(string)
+        }
     }
 }
 </script>

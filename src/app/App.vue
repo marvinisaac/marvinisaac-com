@@ -6,8 +6,12 @@
 
 <script>
 // Source: https://www.digitalocean.com/community/tutorials/vuejs-vue-router-modify-head
+import { useRoute } from 'vue-router'
+import meta from './../app/AppMeta.js'
+
 export default {
     data: () => ({
+        route: useRoute(),
         meta: {
             title: 'Marvin Isaac | Developer - Writer',
             tags: [
@@ -31,27 +35,8 @@ export default {
         }
     }),
     mounted() {
-        this._updateMeta()
-    },
-    methods: {
-        _updateMeta() {
-            // Remove any stale meta tags from the document using the key attribute we set below.
-            Array.from(document.querySelectorAll('[vue-controlled]'))
-                .map(el => el.parentNode.removeChild(el))
-
-            document.title = this.meta.title
-            this.meta.tags.map(tagDetail => {
-                const tag = document.createElement('meta')
-
-                Object.keys(tagDetail).forEach(key => {
-                    tag.setAttribute(key, tagDetail[key])
-                })
-
-                tag.setAttribute('vue-controlled', '')
-                return tag
-            })
-                .forEach(tag => document.head.appendChild(tag))
-            console.log('> Home: Updated head')
+        if (this.route.path === '/') {
+            meta.update(this.meta)
         }
     }
 }

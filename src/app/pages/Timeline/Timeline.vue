@@ -49,6 +49,7 @@ import Blog from '../Post/Type/Blog.vue'
 import ImagePost from '../Post/Type/Image/Image.vue'
 import { useRoute } from 'vue-router'
 import myButton from './../../component/button.vue'
+import meta from './../../../app/AppMeta.js'
 
 export default {
     components: {
@@ -62,20 +63,20 @@ export default {
         posts: undefined,
         route: useRoute(),
         meta: {
-            title: 'Marvin Isaac | Timeline',
+            title: 'Timeline | Marvin Isaac',
             tags: [
                 {
                     name: 'description',
-                    content: 'Marvin Isaac | Timeline'
+                    content: 'Timeline | Marvin Isaac'
                 }, {
                     property: 'og:description',
-                    content: 'Marvin Isaac | Timeline'
+                    content: 'Timeline | Marvin Isaac'
                 }, {
                     property: 'og:image',
                     content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/m.jpg'
                 }, {
                     property: 'og:title',
-                    content: 'Marvin Isaac | Timeline'
+                    content: 'Timeline | Marvin Isaac'
                 }, {
                     property: 'og:url',
                     content: 'https://marvinisaac.com/timeline'
@@ -88,6 +89,11 @@ export default {
     },
     async created() {
         this.getPosts()
+    },
+    mounted() {
+        if (this.route.path === '/timeline') {
+            meta.update(this.meta)
+        }
     },
     methods: {
         getPosts() {
@@ -105,27 +111,7 @@ export default {
                 })
                 .then(response => {
                     this.posts = response.data
-                    this._updateMeta()
                 })
-        },
-        _updateMeta() {
-            // Remove any stale meta tags from the document using the key attribute we set below.
-            Array.from(document.querySelectorAll('[vue-controlled]'))
-                .map(el => el.parentNode.removeChild(el))
-
-            document.title = this.meta.title
-            this.meta.tags.map(tagDetail => {
-                const tag = document.createElement('meta')
-
-                Object.keys(tagDetail).forEach(key => {
-                    tag.setAttribute(key, tagDetail[key])
-                })
-
-                tag.setAttribute('vue-controlled', '')
-                return tag
-            })
-                .forEach(tag => document.head.appendChild(tag))
-            console.log('> Timeline: Updated head')
         }
     }
 }
