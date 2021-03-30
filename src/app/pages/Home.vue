@@ -85,20 +85,20 @@ export default {
             title: 'Marvin Isaac | Developer - Writer',
             tags: [
                 {
-                    name: 'description',
-                    content: 'Marvin Isaac | Developer - Writer'
-                }, {
-                    property: 'og:description',
-                    content: 'Marvin Isaac | Developer - Writer'
-                }, {
-                    property: 'og:image',
-                    content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg'
-                }, {
                     property: 'og:title',
                     content: 'Marvin Isaac | Developer - Writer'
                 }, {
                     property: 'og:url',
                     content: 'https://marvinisaac.com'
+                }, {
+                    name: 'description',
+                    content: 'Marvin Isaac is a developer from the Philippines. He is also working to be a published writer.'
+                }, {
+                    property: 'og:description',
+                    content: 'Marvin Isaac is a developer from the Philippines. He is also working to be a published writer.'
+                }, {
+                    property: 'og:image',
+                    content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg'
                 }
             ]
         }
