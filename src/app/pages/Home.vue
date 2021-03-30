@@ -9,7 +9,7 @@
                 absolute flex flex-auto h-full items-end left-0 top-0 w-full">
 
                 <div class="text-container
-                    pb-4 pl-4
+                    pb-4 pl-4 z-10
                     md:pb-6 md:pl-6">
 
                     <div class="flex items-center">
