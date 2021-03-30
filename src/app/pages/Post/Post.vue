@@ -2,9 +2,11 @@
     <div class="relative">
         <navbar></navbar>
         <div class="flex flex-col max-w-screen-md min-h-full mx-auto p-4 pt-20">
-            <img v-if="!post"
-                class="max-w-screen-sm mx-auto"
-                src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/loading.svg">
+            <div v-if="!post"
+                class="bg-gray-500 border border-gray-300 mb-4 p-4 rounded-md w-full">
+                <img class="max-w-screen-sm mx-auto"
+                    src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/loading.svg">
+            </div>
             <template v-else>
                 <div class="bg-white border border-gray-300 mb-4 px-4 py-1 rounded-md w-full">
                     <router-link class="prose text-xs"
