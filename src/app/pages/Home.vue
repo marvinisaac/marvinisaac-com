@@ -3,7 +3,7 @@
         flex flex-col justify-center max-w-screen-sm mx-auto my-0 p-4 h-screen">
 
         <div class="card-container
-            bg-white mx-auto my-0 overflow-hidden relative rounded-md shadow-2xl w-full">
+            bg-white border border-gray-300 mx-auto my-0 overflow-hidden relative rounded-md shadow-2xl w-full">
 
             <div class="card
                 absolute flex flex-auto h-full items-end left-0 top-0 w-full">
@@ -64,7 +64,7 @@
             </div>
         </div>
         
-        <div class="p-2 text-gray-600 text-right text-xs">
+        <div class="p-2 text-gray-300 text-right text-xs">
             <p>
                 Icons by <a href="https://www.freepik.com" title="Freepik">Freepik</a>
                 from <a href="https://www.flaticon.com/" title="Flaticon">Flaticon</a>.

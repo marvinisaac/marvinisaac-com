@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white mb-4 rounded-sm shadow-2xl">
+    <div class="bg-white border border-gray-300 mb-4 rounded-md">
         <profile
             :id="id"
             :created="created">
