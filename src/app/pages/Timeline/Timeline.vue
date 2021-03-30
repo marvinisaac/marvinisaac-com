@@ -87,6 +87,21 @@ export default {
                 }, {
                     property: 'og:url',
                     content: 'https://marvinisaac.com/timeline'
+                }, {
+                    property: 'twitter:card',
+                    content: 'summary'
+                }, {
+                    property: 'twitter:site',
+                    content: '@marvinisaac'
+                }, {
+                    property: 'twitter:title',
+                    content: 'Timeline | Marvin Isaac'
+                }, {
+                    property: 'twitter:description',
+                    content: 'Timeline | Marvin Isaac'
+                }, {
+                    property: 'twitter:image',
+                    content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/m.jpg'
                 }
             ]
         }

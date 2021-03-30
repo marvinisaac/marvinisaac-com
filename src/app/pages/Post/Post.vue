@@ -111,6 +111,21 @@ export default {
                 }, {
                     property: 'og:image',
                     content: image || imageDefault
+                }, {
+                    property: 'twitter:card',
+                    content: 'summary'
+                }, {
+                    property: 'twitter:site',
+                    content: '@marvinisaac'
+                }, {
+                    property: 'twitter:title',
+                    content: title
+                }, {
+                    property: 'twitter:description',
+                    content: description || title
+                }, {
+                    property: 'twitter:image',
+                    content: image || imageDefault
                 }
             ]
             this.meta.title = title

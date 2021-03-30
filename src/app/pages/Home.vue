@@ -99,6 +99,21 @@ export default {
                 }, {
                     property: 'og:image',
                     content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg'
+                }, {
+                    property: 'twitter:card',
+                    content: 'summary'
+                }, {
+                    property: 'twitter:site',
+                    content: '@marvinisaac'
+                }, {
+                    property: 'twitter:title',
+                    content: 'Marvin Isaac | Developer - Writer'
+                }, {
+                    property: 'twitter:description',
+                    content: 'Marvin Isaac is a developer from the Philippines. He is also working to be a published writer.'
+                }, {
+                    property: 'twitter:image',
+                    content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg'
                 }
             ]
         }
