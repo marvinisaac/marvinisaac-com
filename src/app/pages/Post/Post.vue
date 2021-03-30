@@ -1,40 +1,43 @@
 <template>
-    <div class="flex flex-col justify-center max-w-screen-md min-h-full mx-auto p-4">
-        <img v-if="!post"
-            class="max-w-screen-sm mx-auto"
-            src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/loading.svg">
-        <template v-else>
-            <div class="flex justify-end mb-2">
-                <my-button class="italic"
-                    text="Back to Timeline"
-                    url="/timeline">
-                </my-button>
-            </div>
+    <div class="relative">
+        <navbar></navbar>
+        <div class="flex flex-col max-w-screen-md min-h-full mx-auto p-4 pt-20">
+            <img v-if="!post"
+                class="max-w-screen-sm mx-auto"
+                src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/loading.svg">
+            <template v-else>
+                <div class="bg-white border border-gray-300 mb-4 px-4 py-1 rounded-md w-full">
+                    <router-link class="prose text-xs"
+                        to="/timeline">
+                        &lt; Back to Timeline
+                    </router-link>
+                </div>
 
-            <bleep v-if="post.type === 'bleep'"
-                :id="post.id"
-                :created="post.date_created"
-                :body="post.body"
-                :tag="post.tag">
-            </bleep>
+                <bleep v-if="post.type === 'bleep'"
+                    :id="post.id"
+                    :created="post.date_created"
+                    :body="post.body"
+                    :tag="post.tag">
+                </bleep>
 
-            <blog v-if="post.type === 'blog'"
-                :id="post.id"
-                :created="post.date_created"
-                :updated="post.date_updated"
-                :title="post.title"
-                :body="post.body"
-                :tag="post.tag">
-            </blog>
+                <blog v-if="post.type === 'blog'"
+                    :id="post.id"
+                    :created="post.date_created"
+                    :updated="post.date_updated"
+                    :title="post.title"
+                    :body="post.body"
+                    :tag="post.tag">
+                </blog>
 
-            <image-post v-if="post.type === 'image'"
-                :id="post.id"
-                :created="post.date_created"
-                :title="post.title"
-                :body="post.body"
-                :tag="post.tag">
-            </image-post>
-        </template>
+                <image-post v-if="post.type === 'image'"
+                    :id="post.id"
+                    :created="post.date_created"
+                    :title="post.title"
+                    :body="post.body"
+                    :tag="post.tag">
+                </image-post>
+            </template>
+        </div>
     </div>
 </template>
 
@@ -42,10 +45,10 @@
 import Bleep from './Type/Bleep/Bleep.vue'
 import Blog from '../Post/Type/Blog.vue'
 import ImagePost from '../Post/Type/Image/Image.vue'
-import myButton from './../../component/button.vue'
 import { useRoute } from 'vue-router'
 import meta from './../../AppMeta.js'
 import markdown from 'markdown-it'
+import Navbar from './../../component/navbar.vue'
 
 export default {
     props: {
@@ -55,7 +58,7 @@ export default {
         Bleep,
         Blog,
         ImagePost,
-        myButton
+        Navbar
     },
     data: () => ({
         post: undefined,

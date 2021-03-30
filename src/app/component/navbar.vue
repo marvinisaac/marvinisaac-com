@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white border-b border-gray-300 h-16 fixed left-0 top-0 w-full z-50">
-        <div class="flex h-full justify-between max-w-screen-sm mx-auto">
+        <div class="flex h-full justify-between max-w-screen-md mx-auto">
             <div class="h-full p-2">
                 <router-link class="h-full"
                     to="/">
