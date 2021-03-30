@@ -1,10 +1,13 @@
 <template>
     <div class="flex items-center p-4">
-        <img class="h-10 mr-2 rounded-full w-10"
-            src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-small.jpg">
+        <router-link class="h-10 mr-2 overflow-hidden rounded-full w-10"
+            to="/timeline">
+            <img class="h-full"
+                src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-small.jpg">
+        </router-link>
         <div>
             <span class="font-bold">
-                <router-link to="/">Marvin Isaac</router-link>
+                <router-link to="/timeline">Marvin Isaac</router-link>
             </span>
             <span class="text-gray-500 text-xs">
                     · 
