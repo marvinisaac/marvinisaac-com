@@ -6,7 +6,21 @@
                 class="max-w-screen-sm mx-auto"
                 src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/loading.svg">
             <template v-else>
+                <div v-if="hasTag"
+                    class="bg-white border border-gray-300 mb-4 p-4 rounded-md w-full">
+                    <span class="mr-2 prose text-xs">
+                        Filtered by tag:
+                    </span>
+                    <router-link class="mr-2 prose text-xs"
+                        to="/timeline">
+                        <span class="bg-blue-100 border border-blue-500 rounded-full px-2 py-1 text-blue-500
+                            hover:bg-red-100 hover:border-red-500 hover:text-red-500">
+                            #{{ tag }}
+                        </span>
+                    </router-link>
+                </div>
                 <template v-for="post in posts" :key="post.id">
+
                     <bleep v-if="post.type === 'bleep'"
                         :id="post.id"
                         :created="post.date_created"
@@ -54,6 +68,7 @@ export default {
         hasTag: false,
         posts: undefined,
         route: useRoute(),
+        tag: undefined,
         meta: {
             title: 'Timeline | Marvin Isaac',
             tags: [
@@ -93,6 +108,7 @@ export default {
             let url = process.env.VUE_APP_API_ENDPOINT + 'post/'
             if (tag !== '') {
                 this.hasTag = true
+                this.tag = tag
                 url += `?tag=${tag}`
             } else {
                 this.hasTag = false
