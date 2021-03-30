@@ -3,7 +3,7 @@
         flex flex-col justify-center max-w-screen-sm mx-auto my-0 p-4 h-screen">
 
         <div class="card-container
-            bg-white mx-auto my-0 relative rounded-md shadow-2xl w-full">
+            bg-white mx-auto my-0 overflow-hidden relative rounded-md shadow-2xl w-full">
 
             <div class="card
                 absolute flex flex-auto h-full items-end left-0 top-0 w-full">
@@ -56,8 +56,10 @@
                 </div>
 
                 <div class="image-container
-                    flex-grow self-center">
-                    <img src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/brain-hemispheres.svg">
+                    absolute h-full right-0 top-0">
+                    <div class="absolute bg-gradient-to-r from-white h-full left-0 top-0 w-2/3"></div>
+                    <img class="h-full"
+                        src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg">
                 </div>
             </div>
         </div>
