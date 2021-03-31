@@ -1,5 +1,9 @@
 <template>
-    <div class="flex items-center p-4">
+    <div class="flex items-center p-4"
+        :class="{
+            'border-t-8': isFuture,
+            'border-red-500': isFuture,
+        }">
         <router-link class="h-10 mr-2 overflow-hidden rounded-full w-10"
             to="/timeline">
             <img class="h-full"
@@ -28,10 +32,12 @@ export default {
         published: String
     },
     data: () => ({
-        timeAgo: null
+        timeAgo: null,
+        isFuture: undefined
     }),
     async created() {
         this.timeAgo = format(this.published)
+        this.isFuture = Date.parse(this.published) > new Date()
     }
 }
 </script>

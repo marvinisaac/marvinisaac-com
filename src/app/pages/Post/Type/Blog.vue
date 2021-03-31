@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white border border-gray-300 mb-4 rounded-md">
+    <div class="bg-white border border-gray-300 mb-4 overflow-hidden rounded-md">
         <profile
             :id="id"
             :published="published">
