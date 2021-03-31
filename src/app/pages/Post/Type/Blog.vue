@@ -2,7 +2,7 @@
     <div class="bg-white border border-gray-300 mb-4 rounded-md">
         <profile
             :id="id"
-            :created="created">
+            :published="published">
         </profile>
         <div class="mx-auto prose px-4 py-0
             md:px-16">
@@ -29,7 +29,7 @@ import TagList from '../Partial/TagList.vue'
 export default {
     props: {
         id: String,
-        created: String,
+        published: String,
         title: String,
         body: String,
         tag: Array

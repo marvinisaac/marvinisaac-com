@@ -25,13 +25,13 @@ import { format } from 'timeago.js'
 export default {
     props: {
         id: String,
-        created: String
+        published: String
     },
     data: () => ({
         timeAgo: null
     }),
     async created() {
-        this.timeAgo = format(this.created)
+        this.timeAgo = format(this.published)
     }
 }
 </script>

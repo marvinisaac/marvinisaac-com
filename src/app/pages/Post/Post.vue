@@ -17,14 +17,14 @@
 
                 <bleep v-if="post.type === 'bleep'"
                     :id="post.id"
-                    :created="post.date_created"
+                    :published="post.date_published"
                     :body="post.body"
                     :tag="post.tag">
                 </bleep>
 
                 <blog v-if="post.type === 'blog'"
                     :id="post.id"
-                    :created="post.date_created"
+                    :published="post.date_published"
                     :updated="post.date_updated"
                     :title="post.title"
                     :body="post.body"
@@ -33,7 +33,7 @@
 
                 <image-post v-if="post.type === 'image'"
                     :id="post.id"
-                    :created="post.date_created"
+                    :published="post.date_published"
                     :title="post.title"
                     :body="post.body"
                     :tag="post.tag">

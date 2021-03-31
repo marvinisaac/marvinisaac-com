@@ -2,7 +2,7 @@
     <div class="bg-white border border-gray-300 mb-4 overflow-hidden rounded-md">
         <profile
             :id="id"
-            :created="created">
+            :published="published">
         </profile>
         <div class="container-body
             px-4 py-0
@@ -34,7 +34,7 @@ export default {
     props: {
         id: String,
         body: String,
-        created: String,
+        published: String,
         tag: Array
     },
     components: {
