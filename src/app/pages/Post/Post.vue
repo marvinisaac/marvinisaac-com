@@ -154,12 +154,12 @@ export default {
             return null
         },
         _formatTitle() {
+            let postTypeFormatted = this._capitalize(this.post.type)
             if (this._isUuid(this.post.id)) {
-                let postTypeFormatted = this._capitalize(this.post.type)
                 return `${postTypeFormatted} | Marvin Isaac`
             }
 
-            return `${this.post.title} | Marvin Isaac`
+            return `${this.post.title || postTypeFormatted} | Marvin Isaac`
         },
         _hasImage(html) {
             let domTemporary = new DOMParser().parseFromString(html, 'text/html')
