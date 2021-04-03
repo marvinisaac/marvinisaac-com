@@ -7,7 +7,7 @@
         <router-link class="h-10 mr-2 overflow-hidden rounded-full w-10"
             to="/timeline">
             <img class="h-full"
-                src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-small.jpg">
+                src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-100.jpg">
         </router-link>
         <div>
             <span class="font-bold">

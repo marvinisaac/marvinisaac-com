@@ -59,7 +59,7 @@
                     absolute h-full right-0 top-0">
                     <div class="absolute bg-gradient-to-r from-white h-full left-0 top-0 w-2/3"></div>
                     <img class="h-full"
-                        src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg">
+                        :src="`https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-${imageSize}.jpg`">
                 </div>
             </div>
         </div>
@@ -81,6 +81,7 @@ import meta from './../AppMeta.js'
 export default {
     data: () => ({
         route: useRoute(),
+        imageSize: 400,
         meta: {
             title: 'Marvin Isaac | Developer - Writer',
             tags: [
@@ -98,7 +99,7 @@ export default {
                     content: 'Marvin Isaac is a developer from the Philippines. He is also working to be a published writer.'
                 }, {
                     property: 'og:image',
-                    content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg'
+                    content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-1000.jpg'
                 }, {
                     property: 'twitter:card',
                     content: 'summary'
@@ -113,12 +114,15 @@ export default {
                     content: 'Marvin Isaac is a developer from the Philippines. He is also working to be a published writer.'
                 }, {
                     property: 'twitter:image',
-                    content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac.jpg'
+                    content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-1000.jpg'
                 }
             ]
         }
     }),
     mounted() {
+        if (window.innerWidth < 480) {
+            this.imageSize = 200
+        }
         if (this.route.path === '/') {
             meta.update(this.meta)
         }
