@@ -9,7 +9,12 @@
                 </router-link>
             </div>
 
-            <div class="flex h-full p-6">
+            <div v-if="title !== undefined"
+                class="flex flex-col justify-center prose">
+                <h3> {{ title }} </h3>
+            </div>
+
+            <div class="flex h-full p-6 pl-0">
                 <a class="h-full ml-4"
                     href="https://github.com/marvinisaac">
                     <img class="h-full"
@@ -24,3 +29,11 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props: {
+        title: String
+    }
+}
+</script>

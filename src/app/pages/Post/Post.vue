@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <navbar></navbar>
+        <navbar :title="pageTitle"></navbar>
         <div class="flex flex-col max-w-screen-md min-h-full mx-auto p-4 pt-20">
             <div v-if="!post"
                 class="bg-gray-500 border border-gray-300 mb-4 p-4 rounded-md w-full">
@@ -65,6 +65,7 @@ export default {
     data: () => ({
         post: undefined,
         route: useRoute(),
+        pageTitle: undefined,
         meta: {
             title: undefined,
             tags: undefined
@@ -80,6 +81,7 @@ export default {
             })
             .then(response => {
                 this.post = response.data
+                this.pageTitle = response.data.title
             })
             .catch(() => {
                 this.$router.push('/not-found')

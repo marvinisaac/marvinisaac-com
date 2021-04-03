@@ -55,7 +55,11 @@ export default {
 }
 
 .container-body :deep(hr) {
-    @apply my-4;
+    @apply border -mx-2 my-4;
+}
+
+.container-body :deep(hr + hr) {
+    @apply -mt-2;
 }
 
 .container-body :deep(img) {
