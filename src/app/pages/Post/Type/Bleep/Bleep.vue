@@ -48,7 +48,9 @@ export default {
         url: undefined
     }),
     async created() {
-        const md = new markdown()
+        const md = new markdown({
+            html: true
+        })
         let bodyParsed = md.render(this.body)
         bodyParsed = emojify(bodyParsed)
         this.text = bodyParsed
@@ -90,5 +92,23 @@ export default {
 
 .container-body .container-image {
     padding-top: 56.25%;
+}
+
+.container-body :deep(.container-youtube) {
+    aspect-ratio: 16 / 9;
+    height: 0;
+    margin: 1em auto;
+    padding-top: 56.25%;
+    position: relative;
+    width: 100%;
+}
+
+.container-body :deep(.container-youtube iframe) {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 </style>
