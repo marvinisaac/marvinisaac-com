@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from './pages/Home.vue'
 import NotFound from './pages/NotFound.vue'
-import Post from './pages/Post/Post.vue'
 
 const routes = [
     {
@@ -12,7 +11,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "timeline" */ './pages/Timeline/Timeline.vue')
     }, {
         path: '/post/:id',
-        component: Post,
+        component: () => import(/* webpackChunkName: "post" */ './pages/Post/Post.vue'),
         props: true
     }, {
         path: '/not-found',
