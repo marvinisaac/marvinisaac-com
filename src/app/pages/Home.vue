@@ -56,10 +56,10 @@
                 </div>
 
                 <div class="image-container
-                    absolute h-full right-0 top-0">
-                    <div class="absolute bg-gradient-to-r from-white h-full left-0 top-0 w-2/3"></div>
+                    absolute bg-gradient-to-r from-transparent h-full right-0 top-0"
+                    :class="backgroundColor">
                     <img class="h-full"
-                        :src="`https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-${imageSize}.jpg`">
+                        :src="`https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-transparent-${imageSize}.png`">
                 </div>
             </div>
         </div>
@@ -82,6 +82,7 @@ export default {
     data: () => ({
         route: useRoute(),
         imageSize: 400,
+        backgroundColor: undefined,
         meta: {
             title: 'Marvin Isaac | Developer - Writer',
             tags: [
@@ -119,12 +120,32 @@ export default {
             ]
         }
     }),
+    created() {
+        this.backgroundColor = this.setBackgroundColor()
+    },
     mounted() {
         if (window.innerWidth < 480) {
             this.imageSize = 200
         }
         if (this.route.path === '/') {
             meta.update(this.meta)
+        }
+    },
+    methods: {
+        setBackgroundColor() {
+            const colors = [
+                'gray',
+                'red',
+                'yellow',
+                'green',
+                'blue',
+                'indigo',
+                'purple',
+                'pink',
+            ]
+            let randomIndex = Math.floor(Math.random() * colors.length)
+            let randomColor = colors[randomIndex]
+            return `to-${randomColor}-300`
         }
     }
 }
