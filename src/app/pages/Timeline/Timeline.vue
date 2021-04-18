@@ -121,6 +121,7 @@ export default {
     },
     methods: {
         getPosts() {
+            this.posts = undefined
             let url = this._buildUrl()
             fetch(url)
                 .then(response => {
