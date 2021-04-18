@@ -81,8 +81,8 @@ export default {
                 return response.json()
             })
             .then(response => {
-                this.post = response.data
-                this.pageTitle = response.data.title
+                this.post = response.data.post
+                this.pageTitle = response.data.post.title
             })
             .catch(() => {
                 this.$router.push('/not-found')

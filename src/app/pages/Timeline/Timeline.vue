@@ -145,7 +145,7 @@ export default {
                     return response.json()
                 })
                 .then(response => {
-                    this.posts = response.data
+                    this.posts = response.data.post
                 })
         },
         _buildUrl() {
