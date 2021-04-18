@@ -36,6 +36,11 @@
                         :tag="post.tag">
                     </image-post>
                 </template>
+                <timeline-pagination
+                    @goTo="goTo"
+                    :current="page.current"
+                    :limit="page.limit">
+                </timeline-pagination>
             </template>
         </div>
     </div>
@@ -49,6 +54,7 @@ import { useRoute } from 'vue-router'
 import meta from './../../../app/AppMeta.js'
 import Navbar from './../../component/navbar.vue'
 import TimelineTags from './TimelineTags.vue'
+import TimelinePagination from './TimelinePagination.vue'
 
 export default {
     components: {
@@ -56,11 +62,16 @@ export default {
         Blog,
         ImagePost,
         Navbar,
-        TimelineTags
+        TimelineTags,
+        TimelinePagination
     },
     data: () => ({
         posts: undefined,
         route: useRoute(),
+        page: {
+            current: undefined,
+            limit: undefined
+        },
         meta: {
             title: 'Timeline | Marvin Isaac',
             tags: [
@@ -104,32 +115,24 @@ export default {
         }
     },
     watch: {
+        // Watch URL or back/forward buttons
+        '$route.params': {
+            handler() {
+                this.updateTagsInStore()
+            }
+        },
+        // Watch store for changes
         tags: {
             handler() {
-                this.getPosts()
-                let routeOptions = {
-                    path: 'timeline'
-                }
-                if (this.tags.length > 0) {
-                    routeOptions.query = {
-                        tag: this.tags.join(',')
-                    }
-                }
-                this.$router.push(routeOptions)
+                this.updateUrl()
             },
             deep: true,
             flush: 'post'
         }
     },
     async created() {
-        let tag = this.route.query.tag || {}
-        if (Object.entries(tag).length !== 0) {
-            const tags = tag.split(',')
-            tags.forEach(tag => {
-                this.$store.commit('tagAdd', tag)
-            })
-        }
-        this.getPosts()
+        this.page.current = parseInt(this.route.query.page) || 1
+        this.updateTagsInStore()
     },
     mounted() {
         if (this.route.path === '/timeline') {
@@ -146,12 +149,46 @@ export default {
                 })
                 .then(response => {
                     this.posts = response.data.post
+                    this.page.limit = response.data.pages
+                    if (this.page.current > this.page.limit) {
+                        this.page.current = this.page.limit
+                        this.updateUrl()
+                    }
                 })
         },
-        _buildUrl() {
-            let url = process.env.VUE_APP_API_ENDPOINT + 'post'
+        updateTagsInStore() {
+            let tag = this.route.query.tag || {}
+            if (Object.entries(tag).length !== 0) {
+                const tags = tag.split(',')
+                tags.forEach(tag => {
+                    console.log(tag)
+                    this.$store.commit('tagAdd', tag)
+                })
+            } else {
+                this.$store.commit('tagClear')
+            }
+        },
+        updateUrl() {
+            let routeOptions = {
+                path: 'timeline',
+                query: {}
+            }
+            routeOptions.query.page = this.page.current
             if (this.tags.length > 0) {
-                url = url + '?tag=' + this.tags.join(',')
+                routeOptions.query.tag = this.tags.join(',')
+            }
+            this.$router.push(routeOptions)
+            this.getPosts()
+        },
+        goTo(page) {
+            this.page.current = page
+            this.updateUrl()
+        },
+        _buildUrl() {
+            let url = process.env.VUE_APP_API_ENDPOINT + 'post?'
+            url = url + 'page=' + this.page.current
+            if (this.tags.length > 0) {
+                url = url + '&tag=' + this.tags.join(',')
             }
 
             return url
