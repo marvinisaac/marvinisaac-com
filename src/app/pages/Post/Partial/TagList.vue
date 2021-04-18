@@ -18,14 +18,10 @@ export default {
     },
     methods: {
         goToTimeline(tag) {
-            this.$store.commit('tagAdd', tag)
-            let tags = this.$store.state.tags
             let routeOptions = {
-                path: '/timeline'
-            }
-            if (tags.length > 0) {
-                routeOptions.query = {
-                    tag: tags.join(',')
+                path: '/timeline',
+                query: {
+                    tag
                 }
             }
             this.$router.push(routeOptions)
