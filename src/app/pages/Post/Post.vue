@@ -72,6 +72,7 @@ export default {
         }
     }),
     async created() {
+        this.$store.commit('tagClear')
         fetch(`${process.env.VUE_APP_API_ENDPOINT}post/${this.id}`)
             .then(response => {
                 if (!response.ok) {

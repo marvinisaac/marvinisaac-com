@@ -18,6 +18,9 @@ const store = createStore({
             if (index > -1) {
                 state.tags.splice(index, 1)
             }
+        },
+        tagClear (state) {
+            state.tags = []
         }
     }
 })
