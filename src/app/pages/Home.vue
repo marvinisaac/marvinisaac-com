@@ -103,7 +103,7 @@ export default {
                     content: 'https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-1000.jpg'
                 }, {
                     property: 'twitter:card',
-                    content: 'summary'
+                    content: 'summary_large_image'
                 }, {
                     property: 'twitter:site',
                     content: '@marvinisaac'

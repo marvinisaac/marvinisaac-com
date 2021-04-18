@@ -91,7 +91,7 @@ export default {
                     content: 'https://marvinisaac.com/timeline'
                 }, {
                     property: 'twitter:card',
-                    content: 'summary'
+                    content: 'summary_large_image'
                 }, {
                     property: 'twitter:site',
                     content: '@marvinisaac'
