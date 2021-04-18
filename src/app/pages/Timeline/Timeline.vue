@@ -103,6 +103,14 @@ export default {
             return this.$store.state.tags
         }
     },
+    watch: {
+        tags: {
+            handler() {
+                this.getPosts()
+            },
+            deep: true
+        }
+    },
     async created() {
         this.getPosts()
     },
@@ -113,15 +121,7 @@ export default {
     },
     methods: {
         getPosts() {
-            let tag = this.route.query.tag || ''
-            let url = process.env.VUE_APP_API_ENDPOINT + 'post/'
-            if (tag !== '') {
-                this.hasTag = true
-                this.tag = tag
-                url += `?tag=${tag}`
-            } else {
-                this.hasTag = false
-            }
+            let url = this._buildUrl()
             fetch(url)
                 .then(response => {
                     return response.json()
@@ -129,6 +129,14 @@ export default {
                 .then(response => {
                     this.posts = response.data
                 })
+        },
+        _buildUrl() {
+            let url = process.env.VUE_APP_API_ENDPOINT + 'post'
+            if (this.tags.length > 0) {
+                url = url + '?tag=' + this.tags.join(',')
+            }
+
+            return url
         }
     }
 }
