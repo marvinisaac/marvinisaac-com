@@ -12,7 +12,7 @@
                     pb-4 pl-4 z-10
                     md:pb-6 md:pl-6">
 
-                    <div class="flex items-center">
+                    <div class="flex items-center mb-2">
                         <a class="block w-6"
                             href="https://linkedin.com/in/marvinisaac">
                             <img class="w-4 inline-block"
@@ -26,7 +26,7 @@
                         </h1>
                     </div>
 
-                    <div class="flex items-center">
+                    <div class="flex items-center mb-2">
                         <a class="block w-6"
                             href="https://github.com/marvinisaac">
                             <img class="w-4 inline-block"
