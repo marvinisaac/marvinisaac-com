@@ -107,11 +107,28 @@ export default {
         tags: {
             handler() {
                 this.getPosts()
+                let routeOptions = {
+                    path: 'timeline'
+                }
+                if (this.tags.length > 0) {
+                    routeOptions.query = {
+                        tag: this.tags.join(',')
+                    }
+                }
+                this.$router.push(routeOptions)
             },
-            deep: true
+            deep: true,
+            flush: 'post'
         }
     },
     async created() {
+        let tag = this.route.query.tag || {}
+        if (Object.entries(tag).length !== 0) {
+            const tags = tag.split(',')
+            tags.forEach(tag => {
+                this.$store.commit('tagAdd', tag)
+            })
+        }
         this.getPosts()
     },
     mounted() {
