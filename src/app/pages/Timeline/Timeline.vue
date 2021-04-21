@@ -114,6 +114,7 @@ export default {
         tags: {
             handler() {
                 this.updateUrl()
+                this.$store.commit('pageMoveTo', 1)
                 this.getPosts()
             },
             deep: true
