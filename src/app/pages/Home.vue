@@ -57,7 +57,16 @@
 
                 <div class="image-container
                     absolute bg-gradient-to-r from-transparent h-full right-0 top-0"
-                    :class="backgroundColor">
+                    :class="{
+                        'to-gray-300': backgroundColor === 'gray',
+                        'to-red-300': backgroundColor === 'red',
+                        'to-yellow-300': backgroundColor === 'yellow',
+                        'to-green-300': backgroundColor === 'green',
+                        'to-blue-300': backgroundColor === 'blue',
+                        'to-indigo-300': backgroundColor === 'indigo',
+                        'to-purple-300': backgroundColor === 'purple',
+                        'to-pink-300': backgroundColor === 'pink',
+                    }">
                     <img class="h-full"
                         :src="`https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/marvinisaac-transparent-${imageSize}.png`">
                 </div>
@@ -145,8 +154,7 @@ export default {
                 'pink',
             ]
             let randomIndex = Math.floor(Math.random() * colors.length)
-            let randomColor = colors[randomIndex]
-            return `to-${randomColor}-300`
+            return colors[randomIndex]
         }
     }
 }
