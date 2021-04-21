@@ -124,6 +124,7 @@ export default {
         this.backgroundColor = this.setBackgroundColor()
     },
     mounted() {
+        this.$store.commit('tagClear')
         if (window.innerWidth < 480) {
             this.imageSize = 200
         }
