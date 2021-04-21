@@ -36,11 +36,7 @@
                         :tag="post.tag">
                     </image-post>
                 </template>
-                <timeline-pagination
-                    @goTo="goTo"
-                    :current="page.current"
-                    :limit="page.limit">
-                </timeline-pagination>
+                <timeline-pagination></timeline-pagination>
             </template>
         </div>
     </div>
@@ -68,10 +64,6 @@ export default {
     data: () => ({
         posts: undefined,
         route: useRoute(),
-        page: {
-            current: undefined,
-            limit: undefined
-        },
         meta: {
             title: 'Timeline | Marvin Isaac',
             tags: [
@@ -112,27 +104,37 @@ export default {
     computed: {
         tags () {
             return this.$store.state.tags
+        },
+        pageCurrent () {
+            return this.$store.state.page.current
         }
     },
     watch: {
-        // Watch URL or back/forward buttons
-        '$route.params': {
-            handler() {
-                this.updateTagsInStore()
-            }
-        },
-        // Watch store for changes
+        // Watch store
         tags: {
             handler() {
                 this.updateUrl()
+                this.getPosts()
+            },
+            deep: true
+        },
+        pageCurrent: {
+            handler() {
+                this.updateUrl()
+                this.getPosts()
+            }
+        },
+        // Watch URL or back/forward buttons
+        '$route.params': {
+            handler() {
+                this.updateStore()
             },
             deep: true,
-            flush: 'post'
         }
     },
     async created() {
-        this.page.current = parseInt(this.route.query.page) || 1
-        this.updateTagsInStore()
+        this.updateStore()
+        this.getPosts()
     },
     mounted() {
         if (this.route.path === '/timeline') {
@@ -142,51 +144,46 @@ export default {
     methods: {
         getPosts() {
             this.posts = undefined
-            let url = this._buildUrl()
+            let url = this._buildApiUrl()
             fetch(url)
                 .then(response => {
                     return response.json()
                 })
                 .then(response => {
                     this.posts = response.data.post
-                    this.page.limit = response.data.pages
-                    if (this.page.current > this.page.limit) {
-                        this.page.current = this.page.limit
-                        this.updateUrl()
-                    }
+                    this.$store.commit('pageSetLimit', response.data.pages)
                 })
         },
-        updateTagsInStore() {
+        updateStore() {
             let tag = this.route.query.tag || {}
             if (Object.entries(tag).length !== 0) {
                 const tags = tag.split(',')
                 tags.forEach(tag => {
-                    console.log(tag)
                     this.$store.commit('tagAdd', tag)
                 })
-            } else {
-                this.$store.commit('tagClear')
             }
+
+            let page = this.route.query.page || 1
+            this.$store.commit('pageMoveTo', page)
         },
         updateUrl() {
             let routeOptions = {
                 path: 'timeline',
                 query: {}
             }
-            routeOptions.query.page = this.page.current
+            if (this.pageCurrent > 1) {
+                routeOptions.query.page = this.pageCurrent
+            }
             if (this.tags.length > 0) {
                 routeOptions.query.tag = this.tags.join(',')
             }
             this.$router.push(routeOptions)
-            this.getPosts()
         },
-        goTo(page) {
-            this.page.current = page
-            this.updateUrl()
-        },
-        _buildUrl() {
+        _buildApiUrl() {
             let url = process.env.VUE_APP_API_ENDPOINT + 'post?'
-            url = url + 'page=' + this.page.current
+            if (this.pageCurrent > 1) {
+                url = url + 'page=' + this.pageCurrent
+            }
             if (this.tags.length > 0) {
                 url = url + '&tag=' + this.tags.join(',')
             }

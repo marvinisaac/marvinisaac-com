@@ -3,7 +3,11 @@ import { createStore } from 'vuex'
 const store = createStore({
     state () {
         return {
-            tags: []
+            tags: [],
+            page: {
+                current: 1,
+                limit: 1
+            }
         }
     },
     mutations: {
@@ -21,6 +25,12 @@ const store = createStore({
         },
         tagClear (state) {
             state.tags = []
+        },
+        pageMoveTo (state, page) {
+            state.page.current = parseInt(page)
+        },
+        pageSetLimit (state, limit) {
+            state.page.limit = limit
         }
     }
 })

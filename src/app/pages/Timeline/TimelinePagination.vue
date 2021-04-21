@@ -15,14 +15,18 @@
 
 <script>
 export default {
-    props: {
-        current: Number,
-        limit: Number
+    data: () => ({
+        current: undefined,
+        limit: undefined
+    }),
+    async created() {
+        this.current = this.$store.state.page.current
+        this.limit = this.$store.state.page.limit
     },
     methods: {
         goTo(page) {
             if (page !== this.current) {
-                this.$emit('goTo', page)
+                this.$store.commit('pageMoveTo', page)
             }
         }
     }

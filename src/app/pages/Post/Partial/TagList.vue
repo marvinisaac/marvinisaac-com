@@ -2,7 +2,7 @@
     <div class="flex items-center p-4
         md:px-16">
         <span v-for="tagName in tag"
-            @click="goToTimeline(tagName)"
+            @click="tagAdd(tagName)"
             :key="tagName"
             class="cursor-pointer inline-block italic mx-1 text-xs text-gray-500
                 hover:underline">
@@ -17,14 +17,8 @@ export default {
         tag: Array
     },
     methods: {
-        goToTimeline(tag) {
-            let routeOptions = {
-                path: '/timeline',
-                query: {
-                    tag
-                }
-            }
-            this.$router.push(routeOptions)
+        tagAdd(tag) {
+            this.$store.commit('tagAdd', tag)
         }
     }
 }
