@@ -134,11 +134,11 @@ export default {
         }
     },
     async created() {
-        this.updateStore()
         this.getPosts()
     },
     mounted() {
         if (this.route.path === '/timeline') {
+            this.updateStore()
             meta.update(this.meta)
         }
     },
@@ -159,10 +159,16 @@ export default {
             if (this.route.path !== '/timeline') {
                 return
             }
-            let tag = this.route.query.tag || {}
-            if (Object.entries(tag).length > 0) {
-                const tags = tag.split(',')
-                tags.forEach(tag => {
+            let tagsUrl = this.route.query.tag || ''
+            let tagsUrlArray = tagsUrl.split(',')
+            if (this.tags.length > tagsUrlArray.length) {
+                let tagsDiff = this.tags.filter(tag => !tagsUrlArray.includes(tag))
+                tagsDiff.forEach(tag => {
+                    this.$store.commit('tagRemove', tag)
+                })
+            } else {
+                let tagsDiff = tagsUrlArray.filter(tag => !this.tags.includes(tag))
+                tagsDiff.forEach(tag => {
                     this.$store.commit('tagAdd', tag)
                 })
             }

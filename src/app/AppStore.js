@@ -12,7 +12,7 @@ const store = createStore({
     },
     mutations: {
         tagAdd (state, tag) {
-            if (!state.tags.includes(tag)) {
+            if (!state.tags.includes(tag) && tag !== '') {
                 state.tags.push(tag)
                 state.tags.sort()
             }
