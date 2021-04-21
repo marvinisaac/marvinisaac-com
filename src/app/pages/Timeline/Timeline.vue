@@ -156,8 +156,11 @@ export default {
                 })
         },
         updateStore() {
+            if (this.route.path !== '/timeline') {
+                return
+            }
             let tag = this.route.query.tag || {}
-            if (Object.entries(tag).length !== 0) {
+            if (Object.entries(tag).length > 0) {
                 const tags = tag.split(',')
                 tags.forEach(tag => {
                     this.$store.commit('tagAdd', tag)
