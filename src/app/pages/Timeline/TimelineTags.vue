@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white border border-gray-300 mb-4 p-4 rounded-md sticky top-14 w-full z-40">
+    <div class="bg-white border border-gray-300 mb-4 p-4 sticky top-14 w-full z-40">
         <span class="mr-2 prose text-xs">
             Filtered by tag:
         </span>
