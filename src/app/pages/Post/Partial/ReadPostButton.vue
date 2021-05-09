@@ -1,8 +1,8 @@
 <template>
-    <div class="border p-2 rounded-full">
+    <div class="bg-black p-2 rounded-full">
         <router-link class="block text-center"
             :to="`/post/${id}`">
-                <span class="no-underline">
+                <span class="text-white">
                     Read Post
                 </span>
         </router-link>
