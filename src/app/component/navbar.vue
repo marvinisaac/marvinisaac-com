@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white border-b border-gray-300 h-16 fixed left-0 top-0 w-full z-50">
         <div class="flex h-full justify-between max-w-screen-md mx-auto">
-            <div class="h-full p-2">
+            <div class="flex-shrink-0 h-full p-2">
                 <router-link class="h-full"
                     to="/">
                     <img class="h-full"
@@ -10,11 +10,11 @@
             </div>
 
             <div v-if="title !== undefined"
-                class="flex flex-col justify-center prose">
+                class="self-center prose">
                 <h3> {{ title }} </h3>
             </div>
 
-            <div class="flex h-full p-6 pl-0">
+            <div class="flex flex-shrink-0 h-full p-6 pl-0">
                 <a class="h-full ml-4"
                     href="https://github.com/marvinisaac">
                     <img class="h-full"
