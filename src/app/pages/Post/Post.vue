@@ -8,7 +8,7 @@
                     src="https://one.sgp1.cdn.digitaloceanspaces.com/marvinisaac/loading.svg">
             </div>
             <template v-else>
-                <div class="bg-white border border-gray-300 mb-4 px-4 py-1 rounded-md w-full">
+                <div class="bg-white border border-gray-300 mb-4 px-4 py-1 sticky top-14 w-full z-40">
                     <router-link class="prose text-xs"
                         to="/timeline">
                         &lt; Back to Timeline
