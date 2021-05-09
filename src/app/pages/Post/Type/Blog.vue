@@ -14,6 +14,9 @@
             <div class="container-body mx-auto"
                 v-html="bodyParsed">
             </div>
+            <read-post-button v-if="timeline"
+                :id="id">
+            </read-post-button>
         </div>
         <tag-list :tag="tag"></tag-list>
     </div>
@@ -25,6 +28,7 @@ import Profile from './../Partial/Profile.vue'
 import { emojify } from 'node-emoji'
 // List of supported emojis: https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json
 import TagList from '../Partial/TagList.vue'
+import ReadPostButton from '../Partial/ReadPostButton.vue'
 
 export default {
     props: {
@@ -32,11 +36,13 @@ export default {
         published: String,
         title: String,
         body: String,
-        tag: Array
+        tag: Array,
+        timeline: Boolean
     },
     components: {
         Profile,
-        TagList
+        TagList,
+        ReadPostButton
     },
     data: () => ({
         bodyParsed: null,

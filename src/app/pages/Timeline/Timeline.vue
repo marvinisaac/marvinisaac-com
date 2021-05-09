@@ -25,7 +25,8 @@
                         :published="post.date_published"
                         :title="post.title"
                         :body="post.body"
-                        :tag="post.tag">
+                        :tag="post.tag"
+                        :timeline="true">
                     </blog>
 
                     <image-post v-if="post.type === 'image'"
